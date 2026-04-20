@@ -1,0 +1,26 @@
+import org.apache.poi.xslf.usermodel.XMLSlideShow;
+import org.apache.poi.xslf.usermodel.XSLFSlide;
+import org.apache.poi.xslf.usermodel.XSLFTextBox;
+
+import java.io.FileOutputStream;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+
+        XMLSlideShow ppt = new XMLSlideShow();
+
+        XSLFSlide slide = ppt.createSlide();
+
+        XSLFTextBox title = slide.createTextBox();
+        title.setText("Hello World PPT");
+
+        XSLFTextBox content = slide.createTextBox();
+        content.setText("This PPT is created using Java");
+
+        FileOutputStream out = new FileOutputStream("output.pptx");
+        ppt.write(out);
+        out.close();
+
+        System.out.println("PPT Created Successfully!");
+    }
+}
